@@ -1,0 +1,35 @@
+import 'dart:io';
+
+void main() {
+  // Predefined username and password
+  const String correctUsername = "admin";
+  const String correctPassword = "password123";
+
+  // Maximum number of attempts
+  const int maxAttempts = 4;
+  int attempts = 0;
+
+  while (attempts < maxAttempts) {
+    // Asking for username
+    stdout.write('Enter username: ');
+    String? username = stdin.readLineSync();
+
+    // Asking for password
+    stdout.write('Enter password: ');
+    String? password = stdin.readLineSync();
+
+    // Check if the entered username and password match the predefined values
+    if (username == correctUsername && password == correctPassword) {
+      print('Login successful!');
+      return; // Exit the program on successful login
+    } else {
+      attempts++;
+      print('Invalid username or password. Attempts left: ${maxAttempts - attempts}');
+    }
+
+    // If maximum attempts reached, display error
+    if (attempts == maxAttempts) {
+      print('Too many failed attempts. You are locked out.');
+    }
+  }
+}
